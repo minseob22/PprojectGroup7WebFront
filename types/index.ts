@@ -1,4 +1,3 @@
-// app/types/index.ts
 export type Patient = {
   id: number;
   name: string;

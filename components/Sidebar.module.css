@@ -1,9 +1,6 @@
-/* Sidebar.module.css */
-
 .sidebar {
-  width: 20rem; /* 너비 약간 늘림 */
+  width: 20rem; 
   height: 100%;
-  /* 👇 반투명 유리 효과 (배경이 어두워야 잘 보임) */
   background: rgba(20, 20, 22, 0.7); 
   backdrop-filter: blur(12px);       
   border-right: 1px solid rgba(255, 255, 255, 0.08);
@@ -28,7 +25,7 @@
   gap: 0.5rem;
   width: 100%;
   padding: 0.8rem;
-  background: rgba(59, 130, 246, 0.15); /* 은은한 파랑 */
+  background: rgba(59, 130, 246, 0.15);
   color: #60a5fa; 
   border: none;
   border-radius: 0.75rem;
@@ -60,7 +57,7 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0.75rem;
-  padding: 0.7rem 1rem 0.7rem 2.6rem; /* 아이콘 공간 확보 */
+  padding: 0.7rem 1rem 0.7rem 2.6rem;
   font-size: 0.9rem;
   color: #ededed;
   outline: none;
@@ -78,10 +75,9 @@
   padding: 0.5rem 0.8rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem; /* 항목 간 간격 */
+  gap: 0.25rem; 
 }
 
-/* 스크롤바 커스텀 (크롬/사파리) */
 .patientList::-webkit-scrollbar {
   width: 5px;
 }
@@ -90,11 +86,11 @@
   border-radius: 10px;
 }
 
-/* 👇 [핵심 수정] Link 태그 스타일링 */
+/*Link 태그 스타일링 */
 .patientItem {
-  display: block;        /* 👈 중요! inline -> block 변경 */
-  width: 100%;           /* 가로 꽉 차게 */
-  text-decoration: none; /* 밑줄 제거 */
+  display: block;
+  width: 100%;
+  text-decoration: none;
   text-align: left;
   padding: 0.85rem 1rem;
   border-radius: 0.6rem;
@@ -103,21 +99,21 @@
   border: none;
   transition: all 0.2s ease;
   cursor: pointer;
-  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+  box-sizing: border-box;
 }
 
-/* 마우스 올렸을 때 (희끄무래한 효과) */
+/* 마우스 올렸을 때 */
 .patientItem:hover {
   background: rgba(255, 255, 255, 0.05); /* 아주 연한 흰색 */
   color: #ededed; /* 글씨 밝게 */
 }
 
-/* 현재 선택된 환자 (강조) */
+/* 현재 선택된 환자 */
 .activePatient {
   background: rgba(255, 255, 255, 0.1) !important;
   color: #ffffff;
   font-weight: 600;
-  border-left: 3px solid #60a5fa; /* 왼쪽 파란띠 포인트 */
+  border-left: 3px solid #60a5fa;
 }
 
 .patientName {

@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${styles.body}`}
       >
-        {/* 👇 전체 레이아웃을 잡는 컨테이너 추가 */}
+        {/* 전체 레이아웃을 잡는 컨테이너 추가 */}
         <div className={styles.layoutContainer}>
           
           {/* 사이드바는 여기서 한 번 로드되고 고정됨 */}

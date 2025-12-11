@@ -73,14 +73,13 @@ export default function Sidebar() {
         </div>
       </aside>
 
-      {/* 모달 로직 수정 */}
+      {/* 모달 로직 */}
       {isModalOpen && (
         <PatientModal
           onClose={() => setIsModalOpen(false)}
-          // 👇 [핵심 수정] 여기서 API를 호출해야 합니다!
           onSubmit={async (formData) => {
             try {
-              // 1. API 호출 (서버에 저장)
+              // 1. API 호출
               const response = await registerPatient(formData);
               
               // 2. 모달 닫기
@@ -89,7 +88,7 @@ export default function Sidebar() {
               // 3. 목록 다시 불러오기 (즉시 갱신)
               loadPatients();
 
-              // 4. (선택) 방금 등록한 환자 채팅방으로 바로 이동
+              // 4. 방금 등록한 환자 채팅방으로 바로 이동
               if (response && response.data && response.data.id) {
                 router.push(`/patient/${response.data.id}`);
               }

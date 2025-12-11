@@ -58,9 +58,6 @@
   background: rgba(255, 255, 255, 0.2); /* 마우스 올리면 살짝 진해짐 */
 }
 
-
-
-
 .centeredContainer {
   width: 100%;
   max-width: 800px; /* GPT처럼 중앙에 몰리는 폭 */
@@ -68,8 +65,6 @@
   flex-direction: column;
   gap: 1.5rem;
 }
-
-
 
 .messageRow {
   display: flex;
