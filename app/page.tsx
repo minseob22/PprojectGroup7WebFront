@@ -85,13 +85,14 @@ export default function Home() {
   };
 
   return (
+  
     <div className={styles.layout}>
-      <Sidebar
+      {/*<Sidebar
         patients={patients}
         activePatientId={activePatientId}
         onSelectPatient={setActivePatientId}
         onOpenModal={() => setIsModalOpen(true)}
-      />
+      />*/}
 
       <main className={styles.main}>
         {activePatientId && activePatient ? (

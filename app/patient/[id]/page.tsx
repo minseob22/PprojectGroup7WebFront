@@ -66,12 +66,12 @@ export default function PatientChatPage() {
   return (
     <div className={styles.layout}>
       {/* 사이드바를 여기서도 렌더링하여 ChatGPT처럼 유지 */}
-      <Sidebar 
+      {/*<Sidebar 
         patients={patientsList} 
         activePatientId={id} 
         onSelectPatient={() => {}} // 내부에서 router.push 하므로 빈 함수 처리
         onOpenModal={() => {}} // 필요 시 구현
-      />
+      />*/}
       
       <main className={styles.main}>
         <ChatWindow messages={messages} activePatient={patient} />

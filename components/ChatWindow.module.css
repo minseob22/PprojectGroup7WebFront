@@ -34,8 +34,32 @@
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 핵심: 전체를 중앙으로 */
+  align-items: center; 
 }
+
+
+
+/* 2. 스크롤바 디자인*/
+.chatArea::-webkit-scrollbar {
+  width: 6px; 
+}
+
+.chatArea::-webkit-scrollbar-track {
+  background: transparent; /* 트랙 배경 투명하게 */
+}
+
+.chatArea::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1); /* 사이드바와 같은 반투명 흰색 */
+  border-radius: 10px;                  /* 둥글게 */
+  transition: background 0.2s;
+}
+
+.chatArea::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2); /* 마우스 올리면 살짝 진해짐 */
+}
+
+
+
 
 .centeredContainer {
   width: 100%;
