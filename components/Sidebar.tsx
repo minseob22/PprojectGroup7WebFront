@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // 👈 [수정 1] next/router -> next/navigation
 import styles from "./Sidebar.module.css";
 import { UserPlus, Search } from "lucide-react";
 import { Patient } from "@/types";
@@ -8,17 +9,23 @@ import { Patient } from "@/types";
 interface SidebarProps {
   patients: Patient[];
   activePatientId: number | null;
-  onSelectPatient: (id: number) => void;
+  // onSelectPatient는 URL 이동으로 대체하므로 제거해도 되지만, 
+  // 기존 코드 호환성을 위해 남겨둔다면 선택적(?)으로 처리
+  onSelectPatient?: (id: number) => void; 
   onOpenModal: () => void;
 }
 
 export default function Sidebar({
   patients,
   activePatientId,
-  onSelectPatient,
   onOpenModal,
 }: SidebarProps) {
   const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+
+  const handleSelectPatient = (id: number) => {
+    router.push(`/patient/${id}`);
+  };
 
   return (
     <aside className={styles.sidebar}>
@@ -26,16 +33,15 @@ export default function Sidebar({
         <button className={styles.newPatientButton} onClick={onOpenModal}>
           <UserPlus size={18} /> 새 환자 등록
         </button>
-
         <div className={styles.searchWrapper}>
-          <Search size={16} className={styles.searchIcon} />
-          <input
-            type="text"
-            placeholder="환자 검색..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className={styles.searchInput}
-          />
+             <Search size={16} className={styles.searchIcon} />
+             <input 
+                type="text" 
+                placeholder="환자 검색..." 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className={styles.searchInput}
+             />
         </div>
       </div>
 
@@ -45,7 +51,7 @@ export default function Sidebar({
           .map((p) => (
             <button
               key={p.id}
-              onClick={() => onSelectPatient(p.id)}
+              onClick={() => handleSelectPatient(p.id)}
               className={`${styles.patientItem} ${
                 activePatientId === p.id ? styles.activePatient : ""
               }`}

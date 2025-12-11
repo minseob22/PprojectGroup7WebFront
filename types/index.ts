@@ -1,11 +1,12 @@
 // app/types/index.ts
-export type Patient = {
+export interface Patient {
   id: number;
   name: string;
   birthDate: string;
   gender: string;
-  lastVisit: string;
-};
+  lastVisit: string;  // 최근 방문일
+}
+
 
 export type Message = {
   id: number;

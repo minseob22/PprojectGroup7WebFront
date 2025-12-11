@@ -39,15 +39,15 @@ export async function registerPatient(formData: { name: string; birthDate: strin
 
   const result = await res.json();
   if (!res.ok) {
-  const msg =
-    result.detail?.message ||
-    result.detail ||
-    "Failed to register";
+    const msg =
+      result.detail?.message ||
+      result.detail ||
+      "Failed to register";
 
-  throw new Error(
-    typeof msg === "string" ? msg : JSON.stringify(msg)
-  );
-}
+    throw new Error(
+      typeof msg === "string" ? msg : JSON.stringify(msg)
+    );
+  }
   return result; // { status, message, data } 반환
 }
 
@@ -67,4 +67,20 @@ export async function sendMessage(patientId: number, text: string, file: File | 
 
   if (!res.ok) throw new Error("Failed to send message");
   return await res.json(); // AI 응답 메시지 반환
+}
+
+// 5. 환자 상세 정보 가져오기
+export async function fetchPatientDetails(patientId: number): Promise<Patient> {
+  const res = await fetch(`${BASE_URL}/patients/${patientId}`);
+  if (!res.ok) throw new Error("Failed to fetch patient details");
+
+  const data = await res.json();
+  // 백엔드(snake_case) -> 프론트(camelCase) 변환
+  return {
+    id: data.id,
+    name: data.name,
+    birthDate: data.birthDate,
+    gender: data.gender,
+    lastVisit: data.lastVisit || new Date(data.created_at).toLocaleDateString(),  // 최근 방문일
+  };
 }
